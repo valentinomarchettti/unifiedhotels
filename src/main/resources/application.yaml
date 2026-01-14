@@ -1,3 +1,12 @@
 spring:
   application:
     name: unifiedhotels
+  profiles:
+    active: dev
+
+providers:
+  geoapify:
+    base-url: https://api.geoapify.com
+    api-key: ${GEOAPIFY_API_KEY}          # la leés desde variable de entorno
+    timeout-ms: ${PROVIDER_TIMEOUT_MS:2500}
+
