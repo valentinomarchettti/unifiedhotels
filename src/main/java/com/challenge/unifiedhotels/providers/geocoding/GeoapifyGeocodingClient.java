@@ -43,4 +43,16 @@ public class GeoapifyGeocodingClient {
                     return Mono.just(new GeoPoint(r.lat(), r.lon()));
                 });
     }
+
+    public Mono<String> rawSearch(String text) {
+        return geoapifyWebClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/v1/geocode/search")
+                        .queryParam("text", text)
+                        .queryParam("format", "json")
+                        .queryParam("limit", 1)
+                        .build())
+                .retrieve()
+                .bodyToMono(String.class);
+    }
 }

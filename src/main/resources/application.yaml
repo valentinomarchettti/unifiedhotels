@@ -7,6 +7,7 @@ spring:
 providers:
   geoapify:
     base-url: https://api.geoapify.com
-    api-key: ${GEOAPIFY_API_KEY}          # la leés desde variable de entorno
+    api-key: ${GEOAPIFY_API_KEY}
     timeout-ms: ${PROVIDER_TIMEOUT_MS:2500}
+
 

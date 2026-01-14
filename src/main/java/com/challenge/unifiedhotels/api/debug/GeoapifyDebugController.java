@@ -22,4 +22,9 @@ public class GeoapifyDebugController {
     public Mono<GeoPoint> geocode(@RequestParam @NotBlank(message = "The 'city' parameter is required") String city) {
         return client.geocodeCity(city);
     }
+
+    @GetMapping("/geocode/raw")
+    public Mono<String> geocoderaw(@RequestParam String city) {
+        return client.rawSearch(city); // devuelve JSON crudo de Geoapify
+    }
 }
