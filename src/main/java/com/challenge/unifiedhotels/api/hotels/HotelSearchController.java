@@ -23,8 +23,8 @@ public class HotelSearchController {
     @GetMapping("/search")
     public Mono<HotelSearchResponse> search(
             @RequestParam @NotBlank String city,
-            @RequestParam(defaultValue = "5") @Min(1) @Max(50) double radiusKm,
-            @RequestParam(defaultValue = "20") @Min(1) @Max(50) int limit
+            @RequestParam(defaultValue = "5") @Min(1) @Max(500) double radiusKm,
+            @RequestParam(defaultValue = "20") @Min(1) @Max(500) int limit
     ) {
         return service.search(city, radiusKm, limit);
     }

@@ -22,14 +22,17 @@ public class GeoapifyPlacesClient {
 
     public Mono<GeoapifyPlacesResponse> searchHotels(GeoPoint center, int radiusMeters, int limit) {
         String categories = "accommodation.hotel";
-        String filter = "circle:" + center.lon() + "," + center.lat() + "," + radiusMeters; // ojo: lon,lat
+        String filter = "circle:" + center.lon() + "," + center.lat() + "," + radiusMeters; // lon,lat
+        String bias = "proximity:" + center.lon() + "," + center.lat(); // lon,lat
 
         return geoapifyWebClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/v2/places")
                         .queryParam("categories", categories)
                         .queryParam("filter", filter)
+                        .queryParam("bias", bias)     // <-- CLAVE: habilita properties.distance
                         .queryParam("limit", limit)
+                        // .queryParam("offset", 0)   // opcional paginación
                         .build())
                 .retrieve()
                 .bodyToMono(GeoapifyPlacesResponse.class)

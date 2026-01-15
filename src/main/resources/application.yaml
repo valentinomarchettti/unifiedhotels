@@ -9,5 +9,9 @@ providers:
     base-url: https://api.geoapify.com
     api-key: ${GEOAPIFY_API_KEY}
     timeout-ms: ${PROVIDER_TIMEOUT_MS:2500}
-
+  opentripmap:
+    base-url: "https://api.opentripmap.com/0.1/en"
+    api-key: ${OPENTRIPMAP_API_KEY}
+    timeout-ms: 2500
+    kinds: "accomodations"
 
